@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="RickMortyApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>RickMortyApp</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="libs/angular.min.js"></script>
+    <script src="libs/angular-route.min.js"></script>
+    <script src="libs/angular-sanitize.min.js"></script>
+    
+    <script src="app.js"></script>
+    
+    <script src="services/api.service.js"></script>
+    <script src="services/favorites.service.js"></script>
+    
+    <script src="components/navbar/navbar.directive.js"></script>
+    <script src="components/card/character-card.directive.js"></script>
+    
+    <script src="views/home/home.controller.js"></script>
+    <script src="views/character/character.controller.js"></script>
+    <script src="views/favorites/favorites.controller.js"></script>
+</head>
+<body class="bg-gray-900 text-white">
+    <main class="p-4">
+        <navbar></navbar>
+        <div ng-view></div>
+    </main>
+</body>
+</html>
