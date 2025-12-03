@@ -1,8 +1,16 @@
-<nav class="bg-gray-800 px-6 py-4 flex justify-between items-center">
-    <h1 class="text-2xl font-bold">Rick & Morty</h1>
-
+<nav class="bg-gradient-to-r from-[#1F1F21] to-[#25282D] border-b border-white/10 px-6 py-4 flex justify-between items-center shadow-lg">
+    <h1 class="text-2xl font-bold text-white tracking-wide">
+        Prueba Rick and Morty
+    </h1>
+    
     <div class="flex gap-6">
-        <a href="#/" class="hover:text-green-400">Inicio</a>
-        <a href="#/favorites" class="hover:text-green-400">Favoritos</a>
+        <a href="#/" ng-class="{'text-teal-300 font-semibold': currentRoute === '/', 
+                        'text-gray-300': currentRoute !== '/'}" class="transition hover:text-white">
+            Inicio
+        </a>
+        <a href="#/favorites" ng-class="{'text-teal-300 font-semibold': currentRoute === '/favorites', 
+                        'text-gray-300': currentRoute !== '/favorites'}" class="transition hover:text-white">
+            Favoritos
+        </a>
     </div>
 </nav>

@@ -1,10 +1,13 @@
 var app = angular.module('RickMortyApp', ["ngRoute"]);
 
-app.config(function ($routeProvider) {
+app.config(function ($routeProvider, $locationProvider) {
+    $locationProvider.hashPrefix('');
+
     $routeProvider
         .when("/", {
             templateUrl: "views/home/home.html",
-            controller: "HomeController"
+            controller: "HomeController",
+            reloadOnSearch: false
         })
         .when("/character/:id", {
             templateUrl: "views/character/character.html",

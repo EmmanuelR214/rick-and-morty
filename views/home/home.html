@@ -3,17 +3,49 @@
 
 <body>
     <div>
-        <input type="text" class="w-full mb-6 px-4 py-2 rounded-lg text-black" placeholder="Buscar personaje..."
-            ng-model="search" ng-change="buscar()">
+        <input type="text" class="w-full mb-6 px-4 py-2 rounded-lg text-black" placeholder="Buscar personaje..." ng-model="search" ng-keyup="debounce()">
 
         <div ng-if="loading" class="text-center text-gray-400">
             Cargando...
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            <character-card ng-repeat="c in characters" data="c" toggle-fav="toggleFav(character)" is-fav="isFav(c.id)">
-            </character-card>
+        <div class="px-3 sm:px-8">
+            <div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+                <character-card ng-repeat="c in characters" data="c" toggle-fav="toggleFav(character)"
+                    is-fav="isFav(c.id)">
+                </character-card>
+            </div>
+        </div>
+
+
+        <div class="flex justify-center items-center gap-2 mt-8">
+
+            <button ng-click="buscar(currentPage - 1)" ng-disabled="currentPage === 1" class="inline-flex items-center gap-2 border align-middle select-none 
+                    font-medium transition-all duration-300 ease-in text-sm rounded-md 
+                    py-2 px-4 bg-transparent text-white border-transparent 
+                    hover:bg-white/10 hover:border-white/10 hover:shadow-md
+                    disabled:opacity-40 disabled:hover:bg-transparent disabled:hover:shadow-none">
+
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Anterior</span>
+            </button>
+
+            <span class="text-gray-300 font-medium text-sm px-3 py-2 rounded-md bg-white/5 border border-white/10">
+                Página {{currentPage}} de {{totalPages}}
+            </span>
+
+            <button ng-click="buscar(currentPage + 1)" ng-disabled="currentPage === totalPages" class="inline-flex items-center gap-2 border align-middle select-none 
+                    font-medium transition-all duration-300 ease-in text-sm rounded-md 
+                    py-2 px-4 bg-transparent text-white border-transparent 
+                    hover:bg-white/10 hover:border-white/10 hover:shadow-md
+                    disabled:opacity-40 disabled:hover:bg-transparent disabled:hover:shadow-none">
+
+                <i class="fa-solid fa-arrow-left rotate-180"></i>
+                <span>Siguiente</span>
+            </button>
+
         </div>
     </div>
 </body>
+
 </html>
